@@ -1,0 +1,6 @@
+18:42:01 **** Clean-only build of configuration Nios II for project atividadeCinco_adc_amostragem_bsp ****
+make clean 
+[BSP clean complete]
+
+18:42:02 Build Finished (took 833ms)
+

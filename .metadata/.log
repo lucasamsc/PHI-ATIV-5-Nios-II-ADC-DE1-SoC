@@ -1,0 +1,13 @@
+!SESSION 2024-10-28 18:35:45.452 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/17.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/17.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-10-28 18:42:03.043
+!MESSAGE Indexed 'atividadeCinco_adc_amostragem_bsp' (86 sources, 70 headers) in 1,63 sec: 1.998 declarations; 5.987 references; 118 unresolved inclusions; 6 syntax errors; 191 unresolved names (2,34%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-10-28 18:42:05.363
+!MESSAGE Indexed 'atividadeCinco_adc_amostragem' (1 sources, 0 headers) in 0,00 sec: 1 declarations; 1 references; 1 unresolved inclusions; 0 syntax errors; 0 unresolved names (0,00%)

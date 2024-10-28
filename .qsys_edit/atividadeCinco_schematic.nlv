@@ -1,0 +1,32 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst atividadeCinco.pio_0 -pg 1 -lvl 3 -y 900
+preplace inst atividadeCinco.nios2_gen2_0.reset_bridge -pg 1
+preplace inst atividadeCinco.spi_0 -pg 1 -lvl 3 -y 30
+preplace inst atividadeCinco.sysid_qsys_0 -pg 1 -lvl 3 -y 810
+preplace inst atividadeCinco.onchip_memory2_0 -pg 1 -lvl 3 -y 400
+preplace inst atividadeCinco.eth_tse_0.i_tse_mac -pg 1
+preplace inst atividadeCinco.eth_tse_0 -pg 1 -lvl 3 -y 530
+preplace inst atividadeCinco -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst atividadeCinco.nios2_gen2_0 -pg 1 -lvl 2 -y 160
+preplace inst atividadeCinco.jtag_uart_0 -pg 1 -lvl 3 -y 160
+preplace inst atividadeCinco.nios2_gen2_0.cpu -pg 1
+preplace inst atividadeCinco.timer_0 -pg 1 -lvl 3 -y 270
+preplace inst atividadeCinco.nios2_gen2_0.clock_bridge -pg 1
+preplace inst atividadeCinco.clk_50 -pg 1 -lvl 1 -y 100
+preplace netloc POINT_TO_POINT<net_container>atividadeCinco</net_container>(MASTER)eth_tse_0.receive,(SLAVE)eth_tse_0.transmit) 1 2 2 870 490 1210
+preplace netloc EXPORT<net_container>atividadeCinco</net_container>(SLAVE)atividadeCinco.spi_0_external,(SLAVE)spi_0.external) 1 0 3 NJ 60 NJ 60 NJ
+preplace netloc EXPORT<net_container>atividadeCinco</net_container>(SLAVE)atividadeCinco.eth_tse_0_mac_mii_connection,(SLAVE)eth_tse_0.mac_mii_connection) 1 0 3 NJ 600 NJ 600 NJ
+preplace netloc EXPORT<net_container>atividadeCinco</net_container>(SLAVE)atividadeCinco.pio_0_external_connection,(SLAVE)pio_0.external_connection) 1 0 3 NJ 930 NJ 930 NJ
+preplace netloc EXPORT<net_container>atividadeCinco</net_container>(SLAVE)eth_tse_0.mac_status_connection,(SLAVE)atividadeCinco.eth_tse_0_mac_status_connection) 1 0 3 NJ 640 NJ 640 NJ
+preplace netloc EXPORT<net_container>atividadeCinco</net_container>(SLAVE)clk_50.clk_in_reset,(SLAVE)atividadeCinco.reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>atividadeCinco</net_container>(SLAVE)atividadeCinco.eth_tse_0_mac_gmii_connection,(SLAVE)eth_tse_0.mac_gmii_connection) 1 0 3 NJ 580 NJ 580 NJ
+preplace netloc FAN_OUT<net_container>atividadeCinco</net_container>(SLAVE)eth_tse_0.transmit_clock_connection,(SLAVE)onchip_memory2_0.clk1,(SLAVE)nios2_gen2_0.clk,(SLAVE)eth_tse_0.pcs_mac_tx_clock_connection,(SLAVE)eth_tse_0.pcs_mac_rx_clock_connection,(SLAVE)jtag_uart_0.clk,(MASTER)clk_50.clk,(SLAVE)sysid_qsys_0.clk,(SLAVE)timer_0.clk,(SLAVE)eth_tse_0.receive_clock_connection,(SLAVE)eth_tse_0.control_port_clock_connection,(SLAVE)pio_0.clk,(SLAVE)spi_0.clk) 1 1 2 390 80 850
+preplace netloc EXPORT<net_container>atividadeCinco</net_container>(SLAVE)eth_tse_0.mac_misc_connection,(SLAVE)atividadeCinco.eth_tse_0_mac_misc_connection) 1 0 3 NJ 620 NJ 620 NJ
+preplace netloc FAN_OUT<net_container>atividadeCinco</net_container>(SLAVE)timer_0.irq,(MASTER)nios2_gen2_0.irq,(SLAVE)spi_0.irq,(SLAVE)jtag_uart_0.irq) 1 2 1 870
+preplace netloc INTERCONNECT<net_container>atividadeCinco</net_container>(SLAVE)onchip_memory2_0.reset1,(SLAVE)sysid_qsys_0.reset,(SLAVE)eth_tse_0.reset_connection,(MASTER)clk_50.clk_reset,(SLAVE)pio_0.reset,(SLAVE)spi_0.reset,(SLAVE)jtag_uart_0.reset,(MASTER)nios2_gen2_0.debug_reset_request,(SLAVE)nios2_gen2_0.reset,(SLAVE)timer_0.reset) 1 1 2 410 100 810
+preplace netloc EXPORT<net_container>atividadeCinco</net_container>(SLAVE)timer_0.external_port,(SLAVE)atividadeCinco.timer_0_external_port) 1 0 3 NJ 310 NJ 310 NJ
+preplace netloc EXPORT<net_container>atividadeCinco</net_container>(SLAVE)clk_50.clk_in,(SLAVE)atividadeCinco.clk) 1 0 1 NJ
+preplace netloc INTERCONNECT<net_container>atividadeCinco</net_container>(SLAVE)timer_0.s1,(MASTER)nios2_gen2_0.instruction_master,(SLAVE)spi_0.spi_control_port,(SLAVE)nios2_gen2_0.debug_mem_slave,(SLAVE)onchip_memory2_0.s1,(SLAVE)eth_tse_0.control_port,(SLAVE)pio_0.s1,(SLAVE)jtag_uart_0.avalon_jtag_slave,(MASTER)nios2_gen2_0.data_master,(SLAVE)sysid_qsys_0.control_slave) 1 1 2 430 120 790
+levelinfo -pg 1 0 190 1250
+levelinfo -hier atividadeCinco 200 230 560 1060 1230
