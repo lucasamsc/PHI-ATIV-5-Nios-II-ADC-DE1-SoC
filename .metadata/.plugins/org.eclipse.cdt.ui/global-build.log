@@ -4,3 +4,9 @@ make clean
 18:42:05 **** Clean-only build of configuration Nios II for project atividadeCinco_adc_amostragem ****
 make clean 
 [atividadeCinco_adc_amostragem clean complete]
+17:38:11 **** Clean-only build of configuration Nios II for project atividadeCinco_adc_amost_period_bsp ****
+make clean 
+[BSP clean complete]
+17:38:15 **** Clean-only build of configuration Nios II for project atividadeCinco_adc_amost_period ****
+make clean 
+[atividadeCinco_adc_amost_period clean complete]

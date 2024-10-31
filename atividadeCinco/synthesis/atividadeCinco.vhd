@@ -8,109 +8,18 @@ use IEEE.numeric_std.all;
 
 entity atividadeCinco is
 	port (
-		clk_clk                                     : in  std_logic                     := '0';             --                             clk.clk
-		eth_tse_0_mac_gmii_connection_gmii_rx_d     : in  std_logic_vector(7 downto 0)  := (others => '0'); --   eth_tse_0_mac_gmii_connection.gmii_rx_d
-		eth_tse_0_mac_gmii_connection_gmii_rx_dv    : in  std_logic                     := '0';             --                                .gmii_rx_dv
-		eth_tse_0_mac_gmii_connection_gmii_rx_err   : in  std_logic                     := '0';             --                                .gmii_rx_err
-		eth_tse_0_mac_gmii_connection_gmii_tx_d     : out std_logic_vector(7 downto 0);                     --                                .gmii_tx_d
-		eth_tse_0_mac_gmii_connection_gmii_tx_en    : out std_logic;                                        --                                .gmii_tx_en
-		eth_tse_0_mac_gmii_connection_gmii_tx_err   : out std_logic;                                        --                                .gmii_tx_err
-		eth_tse_0_mac_mii_connection_mii_rx_d       : in  std_logic_vector(3 downto 0)  := (others => '0'); --    eth_tse_0_mac_mii_connection.mii_rx_d
-		eth_tse_0_mac_mii_connection_mii_rx_dv      : in  std_logic                     := '0';             --                                .mii_rx_dv
-		eth_tse_0_mac_mii_connection_mii_rx_err     : in  std_logic                     := '0';             --                                .mii_rx_err
-		eth_tse_0_mac_mii_connection_mii_tx_d       : out std_logic_vector(3 downto 0);                     --                                .mii_tx_d
-		eth_tse_0_mac_mii_connection_mii_tx_en      : out std_logic;                                        --                                .mii_tx_en
-		eth_tse_0_mac_mii_connection_mii_tx_err     : out std_logic;                                        --                                .mii_tx_err
-		eth_tse_0_mac_mii_connection_mii_crs        : in  std_logic                     := '0';             --                                .mii_crs
-		eth_tse_0_mac_mii_connection_mii_col        : in  std_logic                     := '0';             --                                .mii_col
-		eth_tse_0_mac_misc_connection_magic_wakeup  : out std_logic;                                        --   eth_tse_0_mac_misc_connection.magic_wakeup
-		eth_tse_0_mac_misc_connection_magic_sleep_n : in  std_logic                     := '0';             --                                .magic_sleep_n
-		eth_tse_0_mac_misc_connection_ff_tx_crc_fwd : in  std_logic                     := '0';             --                                .ff_tx_crc_fwd
-		eth_tse_0_mac_misc_connection_ff_tx_septy   : out std_logic;                                        --                                .ff_tx_septy
-		eth_tse_0_mac_misc_connection_tx_ff_uflow   : out std_logic;                                        --                                .tx_ff_uflow
-		eth_tse_0_mac_misc_connection_ff_tx_a_full  : out std_logic;                                        --                                .ff_tx_a_full
-		eth_tse_0_mac_misc_connection_ff_tx_a_empty : out std_logic;                                        --                                .ff_tx_a_empty
-		eth_tse_0_mac_misc_connection_rx_err_stat   : out std_logic_vector(17 downto 0);                    --                                .rx_err_stat
-		eth_tse_0_mac_misc_connection_rx_frm_type   : out std_logic_vector(3 downto 0);                     --                                .rx_frm_type
-		eth_tse_0_mac_misc_connection_ff_rx_dsav    : out std_logic;                                        --                                .ff_rx_dsav
-		eth_tse_0_mac_misc_connection_ff_rx_a_full  : out std_logic;                                        --                                .ff_rx_a_full
-		eth_tse_0_mac_misc_connection_ff_rx_a_empty : out std_logic;                                        --                                .ff_rx_a_empty
-		eth_tse_0_mac_status_connection_set_10      : in  std_logic                     := '0';             -- eth_tse_0_mac_status_connection.set_10
-		eth_tse_0_mac_status_connection_set_1000    : in  std_logic                     := '0';             --                                .set_1000
-		eth_tse_0_mac_status_connection_eth_mode    : out std_logic;                                        --                                .eth_mode
-		eth_tse_0_mac_status_connection_ena_10      : out std_logic;                                        --                                .ena_10
-		pio_0_external_connection_export            : in  std_logic_vector(9 downto 0)  := (others => '0'); --       pio_0_external_connection.export
-		reset_reset_n                               : in  std_logic                     := '0';             --                           reset.reset_n
-		spi_0_external_MISO                         : in  std_logic                     := '0';             --                  spi_0_external.MISO
-		spi_0_external_MOSI                         : out std_logic;                                        --                                .MOSI
-		spi_0_external_SCLK                         : out std_logic;                                        --                                .SCLK
-		spi_0_external_SS_n                         : out std_logic;                                        --                                .SS_n
-		timer_0_external_port_export                : out std_logic                                         --           timer_0_external_port.export
+		clk_clk                          : in  std_logic                    := '0';             --                       clk.clk
+		pio_0_external_connection_export : in  std_logic_vector(9 downto 0) := (others => '0'); -- pio_0_external_connection.export
+		reset_reset_n                    : in  std_logic                    := '0';             --                     reset.reset_n
+		spi_0_external_MISO              : in  std_logic                    := '0';             --            spi_0_external.MISO
+		spi_0_external_MOSI              : out std_logic;                                       --                          .MOSI
+		spi_0_external_SCLK              : out std_logic;                                       --                          .SCLK
+		spi_0_external_SS_n              : out std_logic;                                       --                          .SS_n
+		timer_0_external_port_export     : out std_logic                                        --     timer_0_external_port.export
 	);
 end entity atividadeCinco;
 
 architecture rtl of atividadeCinco is
-	component atividadeCinco_eth_tse_0 is
-		port (
-			clk           : in  std_logic                     := 'X';             -- clk
-			reset         : in  std_logic                     := 'X';             -- reset
-			reg_addr      : in  std_logic_vector(7 downto 0)  := (others => 'X'); -- address
-			reg_data_out  : out std_logic_vector(31 downto 0);                    -- readdata
-			reg_rd        : in  std_logic                     := 'X';             -- read
-			reg_data_in   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
-			reg_wr        : in  std_logic                     := 'X';             -- write
-			reg_busy      : out std_logic;                                        -- waitrequest
-			tx_clk        : in  std_logic                     := 'X';             -- clk
-			rx_clk        : in  std_logic                     := 'X';             -- clk
-			set_10        : in  std_logic                     := 'X';             -- set_10
-			set_1000      : in  std_logic                     := 'X';             -- set_1000
-			eth_mode      : out std_logic;                                        -- eth_mode
-			ena_10        : out std_logic;                                        -- ena_10
-			gm_rx_d       : in  std_logic_vector(7 downto 0)  := (others => 'X'); -- gmii_rx_d
-			gm_rx_dv      : in  std_logic                     := 'X';             -- gmii_rx_dv
-			gm_rx_err     : in  std_logic                     := 'X';             -- gmii_rx_err
-			gm_tx_d       : out std_logic_vector(7 downto 0);                     -- gmii_tx_d
-			gm_tx_en      : out std_logic;                                        -- gmii_tx_en
-			gm_tx_err     : out std_logic;                                        -- gmii_tx_err
-			m_rx_d        : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- mii_rx_d
-			m_rx_en       : in  std_logic                     := 'X';             -- mii_rx_dv
-			m_rx_err      : in  std_logic                     := 'X';             -- mii_rx_err
-			m_tx_d        : out std_logic_vector(3 downto 0);                     -- mii_tx_d
-			m_tx_en       : out std_logic;                                        -- mii_tx_en
-			m_tx_err      : out std_logic;                                        -- mii_tx_err
-			m_rx_crs      : in  std_logic                     := 'X';             -- mii_crs
-			m_rx_col      : in  std_logic                     := 'X';             -- mii_col
-			ff_rx_clk     : in  std_logic                     := 'X';             -- clk
-			ff_tx_clk     : in  std_logic                     := 'X';             -- clk
-			ff_rx_data    : out std_logic_vector(31 downto 0);                    -- data
-			ff_rx_eop     : out std_logic;                                        -- endofpacket
-			rx_err        : out std_logic_vector(5 downto 0);                     -- error
-			ff_rx_mod     : out std_logic_vector(1 downto 0);                     -- empty
-			ff_rx_rdy     : in  std_logic                     := 'X';             -- ready
-			ff_rx_sop     : out std_logic;                                        -- startofpacket
-			ff_rx_dval    : out std_logic;                                        -- valid
-			ff_tx_data    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- data
-			ff_tx_eop     : in  std_logic                     := 'X';             -- endofpacket
-			ff_tx_err     : in  std_logic                     := 'X';             -- error
-			ff_tx_mod     : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- empty
-			ff_tx_rdy     : out std_logic;                                        -- ready
-			ff_tx_sop     : in  std_logic                     := 'X';             -- startofpacket
-			ff_tx_wren    : in  std_logic                     := 'X';             -- valid
-			magic_wakeup  : out std_logic;                                        -- magic_wakeup
-			magic_sleep_n : in  std_logic                     := 'X';             -- magic_sleep_n
-			ff_tx_crc_fwd : in  std_logic                     := 'X';             -- ff_tx_crc_fwd
-			ff_tx_septy   : out std_logic;                                        -- ff_tx_septy
-			tx_ff_uflow   : out std_logic;                                        -- tx_ff_uflow
-			ff_tx_a_full  : out std_logic;                                        -- ff_tx_a_full
-			ff_tx_a_empty : out std_logic;                                        -- ff_tx_a_empty
-			rx_err_stat   : out std_logic_vector(17 downto 0);                    -- rx_err_stat
-			rx_frm_type   : out std_logic_vector(3 downto 0);                     -- rx_frm_type
-			ff_rx_dsav    : out std_logic;                                        -- ff_rx_dsav
-			ff_rx_a_full  : out std_logic;                                        -- ff_rx_a_full
-			ff_rx_a_empty : out std_logic                                         -- ff_rx_a_empty
-		);
-	end component atividadeCinco_eth_tse_0;
-
 	component atividadeCinco_jtag_uart_0 is
 		port (
 			clk            : in  std_logic                     := 'X';             -- clk
@@ -241,12 +150,6 @@ architecture rtl of atividadeCinco is
 			nios2_gen2_0_instruction_master_waitrequest    : out std_logic;                                        -- waitrequest
 			nios2_gen2_0_instruction_master_read           : in  std_logic                     := 'X';             -- read
 			nios2_gen2_0_instruction_master_readdata       : out std_logic_vector(31 downto 0);                    -- readdata
-			eth_tse_0_control_port_address                 : out std_logic_vector(7 downto 0);                     -- address
-			eth_tse_0_control_port_write                   : out std_logic;                                        -- write
-			eth_tse_0_control_port_read                    : out std_logic;                                        -- read
-			eth_tse_0_control_port_readdata                : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			eth_tse_0_control_port_writedata               : out std_logic_vector(31 downto 0);                    -- writedata
-			eth_tse_0_control_port_waitrequest             : in  std_logic                     := 'X';             -- waitrequest
 			jtag_uart_0_avalon_jtag_slave_address          : out std_logic_vector(0 downto 0);                     -- address
 			jtag_uart_0_avalon_jtag_slave_write            : out std_logic;                                        -- write
 			jtag_uart_0_avalon_jtag_slave_read             : out std_logic;                                        -- read
@@ -297,45 +200,6 @@ architecture rtl of atividadeCinco is
 			sender_irq    : out std_logic_vector(31 downto 0)         -- irq
 		);
 	end component atividadeCinco_irq_mapper;
-
-	component atividadeCinco_avalon_st_adapter is
-		generic (
-			inBitsPerSymbol : integer := 8;
-			inUsePackets    : integer := 0;
-			inDataWidth     : integer := 8;
-			inChannelWidth  : integer := 3;
-			inErrorWidth    : integer := 2;
-			inUseEmptyPort  : integer := 0;
-			inUseValid      : integer := 1;
-			inUseReady      : integer := 1;
-			inReadyLatency  : integer := 0;
-			outDataWidth    : integer := 32;
-			outChannelWidth : integer := 3;
-			outErrorWidth   : integer := 2;
-			outUseEmptyPort : integer := 0;
-			outUseValid     : integer := 1;
-			outUseReady     : integer := 1;
-			outReadyLatency : integer := 0
-		);
-		port (
-			in_clk_0_clk        : in  std_logic                     := 'X';             -- clk
-			in_rst_0_reset      : in  std_logic                     := 'X';             -- reset
-			in_0_data           : in  std_logic_vector(31 downto 0) := (others => 'X'); -- data
-			in_0_valid          : in  std_logic                     := 'X';             -- valid
-			in_0_ready          : out std_logic;                                        -- ready
-			in_0_startofpacket  : in  std_logic                     := 'X';             -- startofpacket
-			in_0_endofpacket    : in  std_logic                     := 'X';             -- endofpacket
-			in_0_empty          : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- empty
-			in_0_error          : in  std_logic_vector(5 downto 0)  := (others => 'X'); -- error
-			out_0_data          : out std_logic_vector(31 downto 0);                    -- data
-			out_0_valid         : out std_logic;                                        -- valid
-			out_0_ready         : in  std_logic                     := 'X';             -- ready
-			out_0_startofpacket : out std_logic;                                        -- startofpacket
-			out_0_endofpacket   : out std_logic;                                        -- endofpacket
-			out_0_empty         : out std_logic_vector(1 downto 0);                     -- empty
-			out_0_error         : out std_logic                                         -- error
-		);
-	end component atividadeCinco_avalon_st_adapter;
 
 	component atividadecinco_rst_controller is
 		generic (
@@ -488,12 +352,6 @@ architecture rtl of atividadeCinco is
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read            : std_logic;                     -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_read -> mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read:in
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write           : std_logic;                     -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_write -> mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write:in
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata       : std_logic_vector(31 downto 0); -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_writedata -> jtag_uart_0:av_writedata
-	signal mm_interconnect_0_eth_tse_0_control_port_readdata               : std_logic_vector(31 downto 0); -- eth_tse_0:reg_data_out -> mm_interconnect_0:eth_tse_0_control_port_readdata
-	signal mm_interconnect_0_eth_tse_0_control_port_waitrequest            : std_logic;                     -- eth_tse_0:reg_busy -> mm_interconnect_0:eth_tse_0_control_port_waitrequest
-	signal mm_interconnect_0_eth_tse_0_control_port_address                : std_logic_vector(7 downto 0);  -- mm_interconnect_0:eth_tse_0_control_port_address -> eth_tse_0:reg_addr
-	signal mm_interconnect_0_eth_tse_0_control_port_read                   : std_logic;                     -- mm_interconnect_0:eth_tse_0_control_port_read -> eth_tse_0:reg_rd
-	signal mm_interconnect_0_eth_tse_0_control_port_write                  : std_logic;                     -- mm_interconnect_0:eth_tse_0_control_port_write -> eth_tse_0:reg_wr
-	signal mm_interconnect_0_eth_tse_0_control_port_writedata              : std_logic_vector(31 downto 0); -- mm_interconnect_0:eth_tse_0_control_port_writedata -> eth_tse_0:reg_data_in
 	signal mm_interconnect_0_sysid_qsys_0_control_slave_readdata           : std_logic_vector(31 downto 0); -- sysid_qsys_0:readdata -> mm_interconnect_0:sysid_qsys_0_control_slave_readdata
 	signal mm_interconnect_0_sysid_qsys_0_control_slave_address            : std_logic_vector(0 downto 0);  -- mm_interconnect_0:sysid_qsys_0_control_slave_address -> sysid_qsys_0:address
 	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_readdata         : std_logic_vector(31 downto 0); -- nios2_gen2_0:debug_mem_slave_readdata -> mm_interconnect_0:nios2_gen2_0_debug_mem_slave_readdata
@@ -528,21 +386,7 @@ architecture rtl of atividadeCinco is
 	signal irq_mapper_receiver1_irq                                        : std_logic;                     -- spi_0:irq -> irq_mapper:receiver1_irq
 	signal irq_mapper_receiver2_irq                                        : std_logic;                     -- timer_0:irq -> irq_mapper:receiver2_irq
 	signal nios2_gen2_0_irq_irq                                            : std_logic_vector(31 downto 0); -- irq_mapper:sender_irq -> nios2_gen2_0:irq
-	signal eth_tse_0_receive_valid                                         : std_logic;                     -- eth_tse_0:ff_rx_dval -> avalon_st_adapter:in_0_valid
-	signal eth_tse_0_receive_data                                          : std_logic_vector(31 downto 0); -- eth_tse_0:ff_rx_data -> avalon_st_adapter:in_0_data
-	signal eth_tse_0_receive_ready                                         : std_logic;                     -- avalon_st_adapter:in_0_ready -> eth_tse_0:ff_rx_rdy
-	signal eth_tse_0_receive_startofpacket                                 : std_logic;                     -- eth_tse_0:ff_rx_sop -> avalon_st_adapter:in_0_startofpacket
-	signal eth_tse_0_receive_endofpacket                                   : std_logic;                     -- eth_tse_0:ff_rx_eop -> avalon_st_adapter:in_0_endofpacket
-	signal eth_tse_0_receive_error                                         : std_logic_vector(5 downto 0);  -- eth_tse_0:rx_err -> avalon_st_adapter:in_0_error
-	signal eth_tse_0_receive_empty                                         : std_logic_vector(1 downto 0);  -- eth_tse_0:ff_rx_mod -> avalon_st_adapter:in_0_empty
-	signal avalon_st_adapter_out_0_valid                                   : std_logic;                     -- avalon_st_adapter:out_0_valid -> eth_tse_0:ff_tx_wren
-	signal avalon_st_adapter_out_0_data                                    : std_logic_vector(31 downto 0); -- avalon_st_adapter:out_0_data -> eth_tse_0:ff_tx_data
-	signal avalon_st_adapter_out_0_ready                                   : std_logic;                     -- eth_tse_0:ff_tx_rdy -> avalon_st_adapter:out_0_ready
-	signal avalon_st_adapter_out_0_startofpacket                           : std_logic;                     -- avalon_st_adapter:out_0_startofpacket -> eth_tse_0:ff_tx_sop
-	signal avalon_st_adapter_out_0_endofpacket                             : std_logic;                     -- avalon_st_adapter:out_0_endofpacket -> eth_tse_0:ff_tx_eop
-	signal avalon_st_adapter_out_0_error                                   : std_logic;                     -- avalon_st_adapter:out_0_error -> eth_tse_0:ff_tx_err
-	signal avalon_st_adapter_out_0_empty                                   : std_logic_vector(1 downto 0);  -- avalon_st_adapter:out_0_empty -> eth_tse_0:ff_tx_mod
-	signal rst_controller_reset_out_reset                                  : std_logic;                     -- rst_controller:reset_out -> [avalon_st_adapter:in_rst_0_reset, eth_tse_0:reset, mm_interconnect_0:jtag_uart_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset, rst_controller_reset_out_reset:in, rst_translator:in_reset]
+	signal rst_controller_reset_out_reset                                  : std_logic;                     -- rst_controller:reset_out -> [mm_interconnect_0:jtag_uart_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset, rst_controller_reset_out_reset:in, rst_translator:in_reset]
 	signal rst_controller_reset_out_reset_req                              : std_logic;                     -- rst_controller:reset_req -> [onchip_memory2_0:reset_req, rst_translator:reset_req_in]
 	signal rst_controller_001_reset_out_reset                              : std_logic;                     -- rst_controller_001:reset_out -> [irq_mapper:reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, rst_controller_001_reset_out_reset:in]
 	signal rst_controller_001_reset_out_reset_req                          : std_logic;                     -- rst_controller_001:reset_req -> [nios2_gen2_0:reset_req, rst_translator_001:reset_req_in]
@@ -557,66 +401,6 @@ architecture rtl of atividadeCinco is
 	signal rst_controller_001_reset_out_reset_ports_inv                    : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> nios2_gen2_0:reset_n
 
 begin
-
-	eth_tse_0 : component atividadeCinco_eth_tse_0
-		port map (
-			clk           => clk_clk,                                              -- control_port_clock_connection.clk
-			reset         => rst_controller_reset_out_reset,                       --              reset_connection.reset
-			reg_addr      => mm_interconnect_0_eth_tse_0_control_port_address,     --                  control_port.address
-			reg_data_out  => mm_interconnect_0_eth_tse_0_control_port_readdata,    --                              .readdata
-			reg_rd        => mm_interconnect_0_eth_tse_0_control_port_read,        --                              .read
-			reg_data_in   => mm_interconnect_0_eth_tse_0_control_port_writedata,   --                              .writedata
-			reg_wr        => mm_interconnect_0_eth_tse_0_control_port_write,       --                              .write
-			reg_busy      => mm_interconnect_0_eth_tse_0_control_port_waitrequest, --                              .waitrequest
-			tx_clk        => clk_clk,                                              --   pcs_mac_tx_clock_connection.clk
-			rx_clk        => clk_clk,                                              --   pcs_mac_rx_clock_connection.clk
-			set_10        => eth_tse_0_mac_status_connection_set_10,               --         mac_status_connection.set_10
-			set_1000      => eth_tse_0_mac_status_connection_set_1000,             --                              .set_1000
-			eth_mode      => eth_tse_0_mac_status_connection_eth_mode,             --                              .eth_mode
-			ena_10        => eth_tse_0_mac_status_connection_ena_10,               --                              .ena_10
-			gm_rx_d       => eth_tse_0_mac_gmii_connection_gmii_rx_d,              --           mac_gmii_connection.gmii_rx_d
-			gm_rx_dv      => eth_tse_0_mac_gmii_connection_gmii_rx_dv,             --                              .gmii_rx_dv
-			gm_rx_err     => eth_tse_0_mac_gmii_connection_gmii_rx_err,            --                              .gmii_rx_err
-			gm_tx_d       => eth_tse_0_mac_gmii_connection_gmii_tx_d,              --                              .gmii_tx_d
-			gm_tx_en      => eth_tse_0_mac_gmii_connection_gmii_tx_en,             --                              .gmii_tx_en
-			gm_tx_err     => eth_tse_0_mac_gmii_connection_gmii_tx_err,            --                              .gmii_tx_err
-			m_rx_d        => eth_tse_0_mac_mii_connection_mii_rx_d,                --            mac_mii_connection.mii_rx_d
-			m_rx_en       => eth_tse_0_mac_mii_connection_mii_rx_dv,               --                              .mii_rx_dv
-			m_rx_err      => eth_tse_0_mac_mii_connection_mii_rx_err,              --                              .mii_rx_err
-			m_tx_d        => eth_tse_0_mac_mii_connection_mii_tx_d,                --                              .mii_tx_d
-			m_tx_en       => eth_tse_0_mac_mii_connection_mii_tx_en,               --                              .mii_tx_en
-			m_tx_err      => eth_tse_0_mac_mii_connection_mii_tx_err,              --                              .mii_tx_err
-			m_rx_crs      => eth_tse_0_mac_mii_connection_mii_crs,                 --                              .mii_crs
-			m_rx_col      => eth_tse_0_mac_mii_connection_mii_col,                 --                              .mii_col
-			ff_rx_clk     => clk_clk,                                              --      receive_clock_connection.clk
-			ff_tx_clk     => clk_clk,                                              --     transmit_clock_connection.clk
-			ff_rx_data    => eth_tse_0_receive_data,                               --                       receive.data
-			ff_rx_eop     => eth_tse_0_receive_endofpacket,                        --                              .endofpacket
-			rx_err        => eth_tse_0_receive_error,                              --                              .error
-			ff_rx_mod     => eth_tse_0_receive_empty,                              --                              .empty
-			ff_rx_rdy     => eth_tse_0_receive_ready,                              --                              .ready
-			ff_rx_sop     => eth_tse_0_receive_startofpacket,                      --                              .startofpacket
-			ff_rx_dval    => eth_tse_0_receive_valid,                              --                              .valid
-			ff_tx_data    => avalon_st_adapter_out_0_data,                         --                      transmit.data
-			ff_tx_eop     => avalon_st_adapter_out_0_endofpacket,                  --                              .endofpacket
-			ff_tx_err     => avalon_st_adapter_out_0_error,                        --                              .error
-			ff_tx_mod     => avalon_st_adapter_out_0_empty,                        --                              .empty
-			ff_tx_rdy     => avalon_st_adapter_out_0_ready,                        --                              .ready
-			ff_tx_sop     => avalon_st_adapter_out_0_startofpacket,                --                              .startofpacket
-			ff_tx_wren    => avalon_st_adapter_out_0_valid,                        --                              .valid
-			magic_wakeup  => eth_tse_0_mac_misc_connection_magic_wakeup,           --           mac_misc_connection.magic_wakeup
-			magic_sleep_n => eth_tse_0_mac_misc_connection_magic_sleep_n,          --                              .magic_sleep_n
-			ff_tx_crc_fwd => eth_tse_0_mac_misc_connection_ff_tx_crc_fwd,          --                              .ff_tx_crc_fwd
-			ff_tx_septy   => eth_tse_0_mac_misc_connection_ff_tx_septy,            --                              .ff_tx_septy
-			tx_ff_uflow   => eth_tse_0_mac_misc_connection_tx_ff_uflow,            --                              .tx_ff_uflow
-			ff_tx_a_full  => eth_tse_0_mac_misc_connection_ff_tx_a_full,           --                              .ff_tx_a_full
-			ff_tx_a_empty => eth_tse_0_mac_misc_connection_ff_tx_a_empty,          --                              .ff_tx_a_empty
-			rx_err_stat   => eth_tse_0_mac_misc_connection_rx_err_stat,            --                              .rx_err_stat
-			rx_frm_type   => eth_tse_0_mac_misc_connection_rx_frm_type,            --                              .rx_frm_type
-			ff_rx_dsav    => eth_tse_0_mac_misc_connection_ff_rx_dsav,             --                              .ff_rx_dsav
-			ff_rx_a_full  => eth_tse_0_mac_misc_connection_ff_rx_a_full,           --                              .ff_rx_a_full
-			ff_rx_a_empty => eth_tse_0_mac_misc_connection_ff_rx_a_empty           --                              .ff_rx_a_empty
-		);
 
 	jtag_uart_0 : component atividadeCinco_jtag_uart_0
 		port map (
@@ -741,12 +525,6 @@ begin
 			nios2_gen2_0_instruction_master_waitrequest    => nios2_gen2_0_instruction_master_waitrequest,                 --                                         .waitrequest
 			nios2_gen2_0_instruction_master_read           => nios2_gen2_0_instruction_master_read,                        --                                         .read
 			nios2_gen2_0_instruction_master_readdata       => nios2_gen2_0_instruction_master_readdata,                    --                                         .readdata
-			eth_tse_0_control_port_address                 => mm_interconnect_0_eth_tse_0_control_port_address,            --                   eth_tse_0_control_port.address
-			eth_tse_0_control_port_write                   => mm_interconnect_0_eth_tse_0_control_port_write,              --                                         .write
-			eth_tse_0_control_port_read                    => mm_interconnect_0_eth_tse_0_control_port_read,               --                                         .read
-			eth_tse_0_control_port_readdata                => mm_interconnect_0_eth_tse_0_control_port_readdata,           --                                         .readdata
-			eth_tse_0_control_port_writedata               => mm_interconnect_0_eth_tse_0_control_port_writedata,          --                                         .writedata
-			eth_tse_0_control_port_waitrequest             => mm_interconnect_0_eth_tse_0_control_port_waitrequest,        --                                         .waitrequest
 			jtag_uart_0_avalon_jtag_slave_address          => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_address,     --            jtag_uart_0_avalon_jtag_slave.address
 			jtag_uart_0_avalon_jtag_slave_write            => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write,       --                                         .write
 			jtag_uart_0_avalon_jtag_slave_read             => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read,        --                                         .read
@@ -794,44 +572,6 @@ begin
 			receiver1_irq => irq_mapper_receiver1_irq,           -- receiver1.irq
 			receiver2_irq => irq_mapper_receiver2_irq,           -- receiver2.irq
 			sender_irq    => nios2_gen2_0_irq_irq                --    sender.irq
-		);
-
-	avalon_st_adapter : component atividadeCinco_avalon_st_adapter
-		generic map (
-			inBitsPerSymbol => 8,
-			inUsePackets    => 1,
-			inDataWidth     => 32,
-			inChannelWidth  => 0,
-			inErrorWidth    => 6,
-			inUseEmptyPort  => 1,
-			inUseValid      => 1,
-			inUseReady      => 1,
-			inReadyLatency  => 2,
-			outDataWidth    => 32,
-			outChannelWidth => 0,
-			outErrorWidth   => 1,
-			outUseEmptyPort => 1,
-			outUseValid     => 1,
-			outUseReady     => 1,
-			outReadyLatency => 0
-		)
-		port map (
-			in_clk_0_clk        => clk_clk,                               -- in_clk_0.clk
-			in_rst_0_reset      => rst_controller_reset_out_reset,        -- in_rst_0.reset
-			in_0_data           => eth_tse_0_receive_data,                --     in_0.data
-			in_0_valid          => eth_tse_0_receive_valid,               --         .valid
-			in_0_ready          => eth_tse_0_receive_ready,               --         .ready
-			in_0_startofpacket  => eth_tse_0_receive_startofpacket,       --         .startofpacket
-			in_0_endofpacket    => eth_tse_0_receive_endofpacket,         --         .endofpacket
-			in_0_empty          => eth_tse_0_receive_empty,               --         .empty
-			in_0_error          => eth_tse_0_receive_error,               --         .error
-			out_0_data          => avalon_st_adapter_out_0_data,          --    out_0.data
-			out_0_valid         => avalon_st_adapter_out_0_valid,         --         .valid
-			out_0_ready         => avalon_st_adapter_out_0_ready,         --         .ready
-			out_0_startofpacket => avalon_st_adapter_out_0_startofpacket, --         .startofpacket
-			out_0_endofpacket   => avalon_st_adapter_out_0_endofpacket,   --         .endofpacket
-			out_0_empty         => avalon_st_adapter_out_0_empty,         --         .empty
-			out_0_error         => avalon_st_adapter_out_0_error          --         .error
 		);
 
 	rst_controller : component atividadecinco_rst_controller

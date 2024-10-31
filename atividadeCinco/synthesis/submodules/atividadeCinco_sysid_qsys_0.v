@@ -49,7 +49,7 @@ module atividadeCinco_sysid_qsys_0 (
 
   wire    [ 31: 0] readdata;
   //control_slave, which is an e_avalon_slave
-  assign readdata = address ? 1730147402 : 0;
+  assign readdata = address ? 1730402210 : 0;
 
 endmodule
 
